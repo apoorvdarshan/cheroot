@@ -699,7 +699,7 @@ def test_https_over_http_error(http_server, ip_addr):
         ).request('GET', '/')
     underlying_error_string = str(ssl_err.value)
     if IS_ABOVE_OPENSSL31:
-        # 'record layer failure' is typical, but Windows and macOS
+        # 'record layer failure' is typical, but Windows and macOS/Python 3.8
         # yield 'wrong version number' instead.
         assert (
             'record layer failure' in underlying_error_string
